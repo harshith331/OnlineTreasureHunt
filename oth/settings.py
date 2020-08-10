@@ -91,14 +91,13 @@ WSGI_APPLICATION = 'oth.wsgi.application'
 DATABASES = {     
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'oth',
-        'USER': 'oth_user',
-        'PASSWORD': 'testpassword',
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'NAME': config('NAME'),
+        'USER': config('HOST'),
+        'PASSWORD': config('PASSWORD'),
+        'HOST': config('HOST'),
+        'PORT': config('PORT'),
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
