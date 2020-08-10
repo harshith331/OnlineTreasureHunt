@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 
 import os
 from decouple import config
+import dj_database_url
+import django_heroku
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -78,14 +80,23 @@ WSGI_APPLICATION = 'oth.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
-DATABASES = {
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
+
+DATABASES = {     
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': config('NAME'),
+        'USER': config('USER'),
+        'PASSWORD': config('PASSWORD'),
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
-
-
 
 
 # Password validation
@@ -134,7 +145,7 @@ STATICFILES_DIRS = (
 
 # STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static_root")
 STATIC_ROOT = os.path.join(BASE_DIR, "static_root")
-
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 MEDIA_URL ='/media/'
 
@@ -173,3 +184,5 @@ SOCIAL_AUTH_PIPELINE = (
     'social_core.pipeline.user.user_details',
     'social_core.pipeline.social_auth.associate_by_email',
 )
+
+django_heroku.settings(locals())
