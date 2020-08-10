@@ -17,7 +17,7 @@
   border: 2px solid black;
   margin: 50px 5px;
   padding-top: 3%;
-  width: 23.8%;
+  width: 23.5%;
   height: 250px;
   opacity: 0.95;
 }
@@ -37,7 +37,7 @@
 }
 
 .label-data {
-  font-size: 110px;
+  font-size: 100px;
   font-weight: 800;
 }
 
