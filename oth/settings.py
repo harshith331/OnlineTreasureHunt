@@ -28,7 +28,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'y&z($el+d=sp8foi24e_=ng&m*v^h@nrbm3@4
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = config('DEBUG',cast=bool)
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['440601eb.ngrok.io', 'oth123.herokuapp.com','127.0.0.1','localhost','159.89.167.153', 'oth.arhn.co.in', 'oth.nitdgplug.org']
 
@@ -90,12 +90,12 @@ WSGI_APPLICATION = 'oth.wsgi.application'
 
 DATABASES = {     
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': config('NAME'),
-        'USER': config('HOST'),
-        'PASSWORD': config('PASSWORD'),
-        'HOST': config('HOST'),
-        'PORT': config('PORT'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'oth',
+        'USER': 'user_1',
+        'PASSWORD': 'test123',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 
