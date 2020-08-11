@@ -1,13 +1,13 @@
 /*This was all taken from https://tympanus.net/Development/ButtonStylesInspiration/ but I needed to see it in CodePen
 */
 @import url(https://fonts.googleapis.com/css?family=Raleway:200,300,400,500,600);
-/* @font-face {
+@font-face {
 	font-weight: normal;
 	font-style: normal;
 	font-family: 'codropsicons';
 	src: url("../fonts/codropsicons/codropsicons.eot");
 	src: url("../fonts/codropsicons/codropsicons.eot?#iefix") format("embedded-opentype"), url("../fonts/codropsicons/codropsicons.woff") format("woff"), url("../fonts/codropsicons/codropsicons.ttf") format("truetype"), url("../fonts/codropsicons/codropsicons.svg#codropsicons") format("svg");
-} */
+}
 
 .button {
 	float: left;
