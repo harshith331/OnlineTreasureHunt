@@ -30,7 +30,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'y&z($el+d=sp8foi24e_=ng&m*v^h@nrbm3@4
 # DEBUG = config('DEBUG',cast=bool)
 DEBUG = True
 
-ALLOWED_HOSTS = ['440601eb.ngrok.io', 'oth123.herokuapp.com','127.0.0.1','localhost','159.89.167.153', 'oth.arhn.co.in', 'oth.nitdgplug.org']
+ALLOWED_HOSTS = ['440601eb.ngrok.io', 'oth-glug-2021.herokuapp.com','127.0.0.1','localhost','159.89.167.153', 'oth.arhn.co.in', 'oth.nitdgplug.org']
 
 
 # Application definition
