@@ -21,7 +21,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('treasure.urls')),
-    path('',include('django.contrib.auth.urls'),name='auth'),
+    path('',include('django.contrib.auth.urls')),
     path('auth/',include('social_django.urls',namespace='social')),
 ]
 
