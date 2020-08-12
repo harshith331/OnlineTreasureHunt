@@ -51,15 +51,15 @@
   background: #c5134e;
 }
 
-@media screen and (max-width: 750px) {
+@media screen and (max-width: 700px) {
   .timer-header {
     font-size: 3rem;
   }
 
   .timer-col {
-    margin: 10px 2px;
+    margin: 10px 1px;
     height: 70px;
-    width: 23.8%;
+    width: 23.5%;
     padding-top: 2%;
   }
 
