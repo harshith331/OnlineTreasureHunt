@@ -23,21 +23,13 @@ audioVolumeControl.addEventListener("input", function () {
   song.volume = this.value / 100;
 });
 
-// Audio Slider Controls
 
-audioProgress.addEventListener("input", function () {
-  let newValue = audioProgress.value / audioProgress.max;
-  song.currentTime = newValue * song.duration;
-  console.log(song.duration);
-  console.log(newValue);
-  console.log(song.currentTime);
-});
 
 // Audio Slider
 
 song.addEventListener("timeupdate", function () {
   var sliderPosition = song.currentTime / song.duration;
-  audioProgress.value = sliderPosition * 100;
+  audioProgress.style.width = sliderPosition * 100 + "%";
 
   if (song.ended) {
     playing = false;
