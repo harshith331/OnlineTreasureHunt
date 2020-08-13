@@ -16,6 +16,7 @@ def index(request):
     countdown = config.countdown
 
     if request.user.is_authenticated:
+        # return render(request, 'level_transition.html')
         # if countdown and (not request.user.is_staff):
         if countdown:
             print(datetime.datetime.now())
@@ -30,6 +31,7 @@ def index(request):
                 return render(request, 'win.html', {'player': player})
             return render(request, 'finish.html', {'player': player})
     return render(request, 'index_page.html')
+    
 
 
 def save_profile(backend, user, response, *args, **kwargs):

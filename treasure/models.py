@@ -17,9 +17,9 @@ class player(models.Model):
 class level(models.Model):
     l_number = models.IntegerField()
     image = models.ImageField(upload_to = 'images',default='images/sr1.jpg')
-    display_audio = models.BooleanField(default=True)
+    display_audio = models.BooleanField(default=False)
     audio = models.FileField(upload_to = 'audio', blank=True, default='')
-    display_video = models.BooleanField(default=True)
+    display_video = models.BooleanField(default=False)
     video = models.FileField(upload_to = 'video', blank=True, default='')
     text = models.TextField()
     hint=models.TextField(default="na")
