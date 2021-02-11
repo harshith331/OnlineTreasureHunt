@@ -59,7 +59,8 @@ html {
   right: 0;
   color: #FFF;
   text-align: center;
-  font-family: "lato", sans-serif;
+  /* font-family: "lato", sans-serif; */
+  font-family: 'Forum', cursive;
   font-weight: 300;
   font-size: 50px;
   letter-spacing: 10px;
@@ -73,7 +74,8 @@ html {
 }
 
 .headings {
-  font-family: "lato", sans-serif;
+  /* font-family: "lato", sans-serif; */
+  font-family: 'Forum', cursive;
   font-weight: 300;
   letter-spacing: 5px;
   color: #FFF;
@@ -93,15 +95,17 @@ html {
 }
 
 h1 {
-  font-size: 50px;
+  font-size: 55px;
 }
 
 h3 {
-  font-size: 30px;
+  font-size: 35px;
 }
 #transition-img {
-  width: 350px;
+  position: relative;
+  width: 500px;
   height: auto;
+  bottom: 80px;
 }
 
 @keyframes animStar {
