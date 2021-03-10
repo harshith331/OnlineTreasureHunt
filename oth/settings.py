@@ -15,20 +15,22 @@ from decouple import config
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-template_dir=os.path.join(BASE_DIR,'templates')
+template_dir = os.path.join(BASE_DIR, 'templates')
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = config('SECRET_KEY', 'y&z($el+d=sp8foi24e_=ng&m*v^h@nrbm3@4k=8)*i#o5uyco')
+SECRET_KEY = config(
+    'SECRET_KEY', 'y&z($el+d=sp8foi24e_=ng&m*v^h@nrbm3@4k=8)*i#o5uyco')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = config('DEBUG',cast=bool)
-DEBUG = True
+DEBUG = config('DEBUG', cast=bool)
+PRODUCTION = config('PRODUCTION', cast=bool)
 
-ALLOWED_HOSTS = ['440601eb.ngrok.io', 'oth-glug-2021.herokuapp.com','127.0.0.1','localhost','159.89.167.153', 'oth.arhn.co.in', 'oth.nitdgplug.org']
+ALLOWED_HOSTS = ['440601eb.ngrok.io', 'oth-glug-2021.herokuapp.com', '127.0.0.1',
+                 'localhost', '159.89.167.153', 'oth.arhn.co.in', 'oth.nitdgplug.org']
 
 
 # Application definition
@@ -60,7 +62,7 @@ ROOT_URLCONF = 'oth.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [template_dir,],
+        'DIRS': [template_dir, ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -79,23 +81,25 @@ WSGI_APPLICATION = 'oth.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+if DEBUG and not PRODUCTION:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': config('DB_NAME'),
+            'USER': config('DB_USER'),
+            'PASSWORD': config('DB_PASSWORD'),
+            'HOST': 'localhost',
+            'PORT': '',
+        }
+    }
 
-# DATABASES = {     
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'oth',
-#         'USER': 'user_1',
-#         'PASSWORD': 'test123',
-#         'HOST': 'localhost',
-#         'PORT': '5432',
-#     }
-# }
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
@@ -123,7 +127,7 @@ LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'Asia/Kolkata'
 
-USE_TZ= True
+USE_TZ = True
 
 USE_I18N = True
 
@@ -141,11 +145,11 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
 )
 
-STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static_root")
+# STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static_root")
 # STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 # STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-MEDIA_ROOT = os.path.join(BASE_DIR,'media')
-MEDIA_URL ='/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
 
 
 AUTHENTICATION_BACKENDS = (
@@ -159,7 +163,7 @@ AUTHENTICATION_BACKENDS = (
 
 LOGIN_REDIRECT_URL = '/'
 
-LOGIN_URL='/'
+LOGIN_URL = '/'
 
 SOCIAL_AUTH_LOGIN_ERROR_URL = '/'
 
