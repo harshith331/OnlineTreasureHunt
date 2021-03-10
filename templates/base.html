@@ -39,6 +39,9 @@
   <link href="https://fonts.googleapis.com/css?family=Iceland&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Orbitron&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Sigmar+One&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Akaya+Telivigala&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap" rel="stylesheet">
   
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.css">
 
@@ -51,7 +54,7 @@
 <div id="overlay">
 
   <body class="bodypad">
-    <nav class="navbar navbar-dark">
+    <nav class="navbar">
       <div class="container1">
         <div class="navbar-header">
           <button style="background-color:#f5f5f5" type="button" class="navbar-toggle" data-toggle="collapse"
@@ -74,21 +77,17 @@
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav navbar-right">
-
+            {%if user.is_authenticated%}
+              <li>
+                  <a class="navbar-brand" href="#">
+                    <b><img src="{{ player.profile_url }}" height="20" width="25" style="border-radius: 50%;" class="d-inline-block align-top"></b>
+                  </a>
+              </li>
+            {%endif%}
             <li><a style="font-family:'Capriola',sans-serif;font-size:20px" href="/rules">Rules</a></li>
             <li><a style="font-family:'Capriola',sans-serif;font-size:20px" href="/lboard/">Leaderboard</a></li>
             {%if user.is_authenticated%}
-            <li class="dropdown">
-              <button class="dropdown-toggle btn btn-default navbar-btn" data-toggle="dropdown"
-                style="margin-left:10px;background-color:rgb(53, 51, 51)">
-                <span style="font-family:'Capriola',sans-serif;font-size:20px; color:#7fcae0">
-                  <b><i class="fas fa-user"></i> {{ user.get_full_name|default:user.username }}</b> &nbsp;<span9 class="caret" style="color:#7fcae0;"></span9></span>
-                </span>
-              </button>
-              <ul class="dropdown-menu">
-                <li><a style="font-family:'Capriola',sans-serif;font-size:20px" href="{% url 'logout' %}?next={{ '/' }}"><b>Logout</b></a></li>
-              </ul>
-            </li>
+              <li><a style="font-family:'Capriola',sans-serif;font-size:20px" href="{% url 'logout' %}?next={{ '/' }}"><b>Logout</b></a></li>
             {%endif%}
           </ul>
         </div>
@@ -142,7 +141,116 @@
 <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js">
 </script>
 <script>
-  var options = { "particles": { "number": { "value": 99, "density": { "enable": true, "value_area": 552.4033491425909 } }, "color": { "value": "#ffffff" }, "shape": { "type": "circle", "stroke": { "width": 0, "color": "#000000" }, "polygon": { "nb_sides": 3 }, "image": { "src": "img/github.svg", "width": 70, "height": 100 } }, "opacity": { "value": 1, "random": true, "anim": { "enable": false, "speed": 1, "opacity_min": 0.1, "sync": false } }, "size": { "value": 2, "random": true, "anim": { "enable": false, "speed": 40, "size_min": 0.1, "sync": false } }, "line_linked": { "enable": false, "distance": 150, "color": "#ffffff", "opacity": 0.4, "width": 1 }, "move": { "enable": true, "speed": 1.5782952832645452, "direction": "none", "random": true, "straight": false, "out_mode": "out", "bounce": false, "attract": { "enable": false, "rotateX": 600, "rotateY": 1200 } } }, "interactivity": { "detect_on": "canvas", "events": { "onhover": { "enable": false, "mode": "repulse" }, "onclick": { "enable": true, "mode": "repulse" }, "resize": true }, "modes": { "grab": { "distance": 400, "line_linked": { "opacity": 1 } }, "bubble": { "distance": 400, "size": 40, "duration": 2, "opacity": 8, "speed": 3 }, "repulse": { "distance": 200, "duration": 0.4 }, "push": { "particles_nb": 4 }, "remove": { "particles_nb": 2 } } }, "retina_detect": false };
+  var options = {
+  "particles": {
+    "number": {
+      "value": 30,
+      "density": {
+        "enable": true,
+        "value_area": 500
+      }
+    },
+    "color": {
+      "value": "#ffffff"
+    },
+    "shape": {
+      "type": ["circle", "triangle"],
+      "stroke": {
+        "width": 0,
+        "color": "#808000"
+      },
+      "polygon": {
+        "nb_sides": 5
+      },
+      "image": {
+        "src": "img/github.svg",
+        "width": 50,
+        "height": 50
+      }
+    },
+    "opacity": {
+      "value": 0.5,
+      "random": false,
+      "anim": {
+        "enable": false,
+        "speed": 0.5,
+        "opacity_min": 0.1,
+        "sync": false
+      }
+    },
+    "size": {
+      "value": 2,
+      "random": true,
+      "anim": {
+        "enable": false,
+        "speed": 0,
+        "size_min": 0.1,
+        "sync": false
+      }
+    },
+    "line_linked": {
+      "enable": true,
+      "distance": 200,
+      "color": "#808000",
+      "opacity": 0.6,
+      "width": 3
+    },
+    "move": {
+      "enable": true,
+      "speed": 3.5,
+      "direction": "none",
+      "random": false,
+      "straight": false,
+      "out_mode": "out",
+      "bounce": false,
+      "attract": {
+        "enable": false,
+        "rotateX": 600,
+        "rotateY": 1200
+      }
+    }
+  },
+  "interactivity": {
+    "detect_on": "canvas",
+    "events": {
+      "onhover": {
+        "enable": false,
+        "mode": "repulse"
+      },
+      "onclick": {
+        "enable": true,
+        "mode": "push"
+      },
+      "resize": true
+    },
+    "modes": {
+      "grab": {
+        "distance": 800,
+        "line_linked": {
+          "opacity": 1
+        }
+      },
+      "bubble": {
+        "distance": 800,
+        "size": 80,
+        "duration": 2,
+        "opacity": 0.8,
+        "speed": 3
+      },
+      "repulse": {
+        "distance": 400,
+        "duration": 0.4
+      },
+      "push": {
+        "particles_nb": 4
+      },
+      "remove": {
+        "particles_nb": 2
+      }
+    }
+  },
+  "retina_detect": true
+};
   particlesJS("particle", options);
 </script>
 </body>
