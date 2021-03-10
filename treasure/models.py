@@ -19,7 +19,7 @@ class player(models.Model):
 class level(models.Model):
     l_number = models.IntegerField()
     display_image = models.BooleanField(default=False)
-    image = models.ImageField(upload_to='images', default='')
+    image = models.ImageField(upload_to='images', blank=True, default='')
     display_audio = models.BooleanField(default=False)
     audio = models.FileField(upload_to='audio', blank=True, default='')
     display_video = models.BooleanField(default=False)

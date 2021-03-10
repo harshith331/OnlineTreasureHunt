@@ -2,7 +2,6 @@
 
 {%block content%}
       <div class="row">
-        <a href="/"><button type="button" class="btn btn-success btn-lg " style="margin-top:10px;">Go Back</button></a>
         <h1 class="text-center" style="color: white;">Leaderboard</h1>
         <br>
         {% if hide %}
@@ -11,16 +10,18 @@
             <div class="col-lg-8 col-lg-offset-2">
             {% if players %}
                 <div style="border: none;" class="table-responsive">
-                <table  class="table table-hover table-striped"  style="font-weight:bold;box-shadow: 0px 0px 8px #000">
-                    <tr style="background-color:#001933; color:#fff; font-size:18px"> 
-                        <th>#</th><th >Player Name</th><th>Player Score</th><th>Last level Crossed at</th>
-                    </tr>
-                    {% for player in players %}
-                    <tr style="background-color:#b1d3f8;color: rgba(0, 11, 46, 0.836);">
-                        <td>{{ player.rank }}</td><td>{{ player.name }}</td>    <td> {{player.score}} </td>    <td> {{player.timestamp}}</td>
-                    </tr>
-                    {% endfor %}
-                </table>
+                    <table class="table table-hover table-striped"  style="font-weight:bold;box-shadow: 0px 0px 8px #000">
+                        <tr class="table-header"> 
+                            <th style="text-align: center;">#</th><th style="text-align: center;">Player Name</th><th style="text-align: center;">Player Score</th>
+                        </tr>
+                        {% for player in players %}
+                        <tr style="background-color:rgba(52,60,65,.5) !important;
+                        backdrop-filter: blur(10px);
+                        -webkit-backdrop-filter: blur(6px);color: white;">
+                            <td style="text-align: center;">{{ player.rank }}</td><td style="text-align: center;">{{ player.name }}</td>    <td style="text-align: center;"> {{player.score}} </td>
+                        </tr>
+                        {% endfor %}
+                    </table>
                 </div>
             {% else %}
                 <strong>There are no players present.</strong>
