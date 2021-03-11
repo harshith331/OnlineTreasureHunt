@@ -113,10 +113,14 @@ def lboard(request):
         pl.rank = cur_rank
         cur_rank += 1
 
-    top_scorers = players[:4]
+    top_scorers = {
+        'first': players[0],
+        'second': players[1],
+        'third': players[2]
+    }
 
     if len(players) > 3:
-        players = players[4:]
+        players = players[3:]
     else:
         players = []
 
