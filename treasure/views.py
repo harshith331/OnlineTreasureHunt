@@ -104,18 +104,26 @@ def answer(request):
 
 
 def lboard(request):
-    p = models.player.objects.order_by('-score', 'timestamp')
+    players = models.player.objects.order_by('-score', 'timestamp')
     if request.user.is_authenticated:
         player = models.player.objects.get(user_id=request.user.pk)
     cur_rank = 1
 
-    for pl in p:
+    for pl in players:
         pl.rank = cur_rank
         cur_rank += 1
-    if request.user.is_authenticated:
-        return render(request, 'lboard.html', {'players': p, 'player': player, 'hide': False})
+
+    top_scorers = players[:4]
+
+    if len(players) > 3:
+        players = players[4:]
     else:
-        return render(request, 'lboard.html', {'players': p, 'hide': False})
+        players = []
+
+    if request.user.is_authenticated:
+        return render(request, 'lboard.html', {'players': players, 'player': player, 'top_scorers': top_scorers, 'hide': False})
+    else:
+        return render(request, 'lboard.html', {'players': players, 'top_scorers': top_scorers, 'hide': False})
 
 
 def rules(request):
