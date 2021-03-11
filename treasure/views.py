@@ -113,11 +113,9 @@ def lboard(request):
         pl.rank = cur_rank
         cur_rank += 1
 
-    top_scorers = {
-        'first': players[0],
-        'second': players[1],
-        'third': players[2]
-    }
+    first = players[0]
+    second = players[1]
+    third = players[2]
 
     if len(players) > 3:
         players = players[3:]
@@ -125,9 +123,9 @@ def lboard(request):
         players = []
 
     if request.user.is_authenticated:
-        return render(request, 'lboard.html', {'players': players, 'player': player, 'top_scorers': top_scorers, 'hide': False})
+        return render(request, 'lboard.html', {'players': players, 'player': player, 'first': first, 'second': second, 'third': third, 'hide': False})
     else:
-        return render(request, 'lboard.html', {'players': players, 'top_scorers': top_scorers, 'hide': False})
+        return render(request, 'lboard.html', {'players': players, 'first': first, 'second': second, 'third': third, 'hide': False})
 
 
 def rules(request):
