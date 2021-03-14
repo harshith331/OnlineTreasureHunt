@@ -15,39 +15,15 @@
   <script src="{% static 'js/particle.js' %}"></script>
 
   <style>
-    html,body {
+    html,
+    body {
       padding: 0;
       margin: 0;
     }
+
     .bodypad {
-      background-image: url("") !important;
+      background-image: url("../static/img/landing.png") !important;
       background-repeat: no-repeat;
-    }
-    .button {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 15px 25px;
-      font-size: 24px;
-      font-family: 'Ledger', serif;
-      cursor: pointer;
-      text-align: center;
-      text-decoration: none;
-      outline: none;
-      color: #fff;
-      background-color: #4CAF50;
-      border: none;
-      border-radius: 15px;
-      box-shadow: 0 9px #999;
-    }
-
-    .button:hover {
-      background-color: #3e8e41
-    }
-
-    .button:active {
-      background-color: #3e8e41;
-      box-shadow: 0 5px #666;
-      transform: translateY(4px);
     }
 
     #particles-js {
@@ -69,6 +45,25 @@
       left: 0;
       z-index: 0;
     }
+
+    .next {
+      background-color: transparent;
+      border-color: blue;
+      font-family: 'Akaya Telivigala', cursive;
+      font-size: 2.5rem;
+      color: #fff;
+      background-image: -webkit-linear-gradient(45deg, blue 50%, transparent 50%);
+      background-image: linear-gradient(45deg, blue 50%, transparent 50%);
+      background-position: 100%;
+      background-size: 400%;
+      -webkit-transition: background 600ms ease-in-out;
+      transition: background 600ms ease-in-out;
+    }
+
+    .next:hover {
+      background-position: 0;
+      color: #fff;
+    }
   </style>
 
 </head>
@@ -81,7 +76,7 @@
     <h3 class="headings">CORRECT ANSWER</h3>
     <div>
       <a href="/answer">
-        <div class="button"><b>Next Question</b></div>
+        <button class="next"><b>Next Question</b></button>
       </a>
     </div>
     <img id="transition-img" src="{% static 'img/AIMLV9.png' %}" alt="">

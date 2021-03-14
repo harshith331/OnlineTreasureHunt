@@ -77,13 +77,13 @@
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav navbar-right">
-            {%if user.is_authenticated%}
+            <!-- {%if user.is_authenticated%}
               <li>
                   <a class="navbar-brand" href="#">
                     <b><img src="{{ player.profile_url }}" height="20" width="25" style="border-radius: 50%;" class="d-inline-block align-top"></b>
                   </a>
               </li>
-            {%endif%}
+            {%endif%} -->
             <li><a style="font-family:'Capriola',sans-serif;font-size:20px" href="/rules">Rules</a></li>
             <li><a style="font-family:'Capriola',sans-serif;font-size:20px" href="/lboard/">Leaderboard</a></li>
             {%if user.is_authenticated%}
@@ -109,7 +109,13 @@
           <div id="cont">
             <div class="footer_center">
               <p style="color:white;">&copy; 2020. <strong>Developed by</strong> The GNU Linux Users' Group, NIT Durgapur</p>
-              <a target="__blank" href="https://nitdgplug.org/"><img id="logo-img" src="/static/img/glugLogo.png" alt="Aarohanlogo"></a>
+              <div class="social_links">
+                <a target="__blank" href="https://www.facebook.com/nitdgplug"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.instagram.com/nitdgplug/" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a target="__blank" href="https://nitdgplug.org/"><img id="logo-img" src="/static/img/glugLogo.png" alt="Aarohanlogo"></a>
+                <a href="https://www.linkedin.com/company/lugnitdgp" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/lugnitdgp" target="_blank"><i class="fab fa-github"></i></a>
+              </div>
             </div>
           </div>
 
