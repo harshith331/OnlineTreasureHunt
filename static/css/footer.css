@@ -104,8 +104,22 @@ section {
   }
 }
 #logo-img {
-  width: 100px;
-  height: 100px;
+  width: 35px;
+  height: 35px;
   margin: auto;
-  margin-top: 5px;
+  margin-top: -16px;
+}
+
+.social_links {
+  margin-top: 10px;
+}
+
+.fab {
+  font-size: 30px;
+  margin: 6px;
+  opacity: 0.85;                /* Opacity (Transparency) */
+  color: rgba(255, 255, 255, 0.75);   /* RGBA Color (Alternative Transparency) */
+  -webkit-filter: blur(0.5px);    /* Blur */
+  -moz-filter: blur(0.5px);
+  filter: blur(0.5px);
 }

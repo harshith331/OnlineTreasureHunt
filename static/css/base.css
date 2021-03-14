@@ -293,7 +293,7 @@ a.disabled {
 }
 
 .padleft{
-  margin-top: 15%;
+  margin-top: 10%;
 }
 
 .btn {
@@ -308,11 +308,31 @@ a.disabled {
   background-size: 400%;
   -webkit-transition: background 600ms ease-in-out;
   transition: background 600ms ease-in-out;
-  margin-top: 0.8em;
+  margin-top: 0.5em;
   margin-bottom: 0.5em;
 }
 
 .btn:hover {
+  background-position: 0;
+  color: #fff;
+}
+
+.github {
+  background-color: transparent;
+  border-color: blue;
+  font-family: 'Akaya Telivigala', cursive;
+  font-size: 2.5rem; 
+  color: #fff;
+  background-image: -webkit-linear-gradient(45deg, blue 50%, transparent 50%);
+  background-image: linear-gradient(45deg, blue 50%, transparent 50%);
+  background-position: 100%;
+  background-size: 400%;
+  -webkit-transition: background 600ms ease-in-out;
+  transition: background 600ms ease-in-out;
+  margin-bottom: 0.5em;
+}
+
+.github:hover {
   background-position: 0;
   color: #fff;
 }
@@ -388,12 +408,33 @@ a.disabled {
   color: #c6e2ff;
 }
 
+.table-responsive {
+  backdrop-filter: blur(4px);
+}
+
 .table-header {
   color:#fff;
   font-size:18px;
   background-color:rgba(52,60,65,.5) !important;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(6px);
+}
+
+.submit {
+  background-color: transparent;
+  border-color: blue;
+  font-family: 'Akaya Telivigala', cursive;
+  font-size: 2.5rem; 
+  color: #fff;
+  background-image: -webkit-linear-gradient(45deg, blue 50%, transparent 50%);
+  background-image: linear-gradient(45deg, blue 50%, transparent 50%);
+  background-position: 100%;
+  background-size: 400%;
+  -webkit-transition: background 600ms ease-in-out;
+  transition: background 600ms ease-in-out;
+}
+
+.submit:hover {
+  background-position: 0;
+  color: #fff;
 }
 
 .top3 {
@@ -411,7 +452,7 @@ a.disabled {
   background-color: rgba(3, 32, 44, 0.6);
   backdrop-filter: blur(3px);
   border: 1px solid #32c8c6;
-  width: 9rem;
+  width: 11rem;
   height: auto;
   text-align: center;
   padding: 3rem 0 0;
@@ -431,8 +472,8 @@ a.disabled {
   position: absolute;
   top: -2rem;
   left: 2.5rem;
-  width: 4rem;
-  height: 4rem;
+  width: 5.6rem;
+  height: 5.6rem;
   border-radius: 50%;
   background-size: cover;
   background-position: center;
@@ -440,18 +481,19 @@ a.disabled {
   box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2), 0 1rem 1rem -0.5rem rgba(0, 0, 0, 0.3);
 }
 .top3 .item .pos {
+  margin-top: 1.2rem;
   font-weight: 900;
   font-size: 2rem;
   margin-bottom: 0.5rem;
   color:#fff;
 }
 .top3 .item .name {
-  font-size: 1rem;
+  font-size: 1.6rem;
   margin-bottom: 0.5rem;
 }
 .top3 .item .score {
   /* opacity: 0.5; */
-  font-size: 1rem;
+  font-size: 1.4rem;
   font-weight: 900;
   padding-bottom: 5px;
   color:#fff;
@@ -462,13 +504,13 @@ a.disabled {
   /* opacity: 0.5; */
 }
 .top3 .item.one {
-  width: 10rem;
-  height: 11rem;
+  width: 11rem;
+  height: 15rem;
   padding-top: 3.5rem;
 }
 .top3 .item.one .pic {
-  width: 5rem;
-  height: 5rem;
+  width: 6rem;
+  height: 6rem;
   left: 2.5rem;
 }
 .top3 .item:hover {
@@ -489,7 +531,7 @@ a.disabled {
           align-items: center;
   color:#aafffe;
   
-  height: 3rem;
+  height: 7rem;
   border-radius: 4rem;
   margin-bottom: 2rem;
   background-color: rgba(3, 32, 44, 0.4);
@@ -509,7 +551,7 @@ a.disabled {
   position: absolute;
   left: -2rem;
   text-align: center;
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   width: 1.5rem;
   color: #fff;
   font-weight: 500;
@@ -518,8 +560,9 @@ a.disabled {
   transition: opacity 200ms ease-in-out;
 }
 .list .item .pic {
-  width: 3rem;
-  height: 3rem;
+  width: 5rem;
+  height: 5rem;
+  margin-left: 1rem;
   border-radius: 50%;
   background-size: cover;
   background-position: center;
@@ -530,7 +573,7 @@ a.disabled {
   -webkit-box-flex: 2;
           flex-grow: 2;
   flex-basis: 10rem;
-  font-size: 1.1rem;
+  font-size: 1.5rem;
 }
 .list .item .score {
   margin-right: 1.5rem;
@@ -575,7 +618,7 @@ a.disabled {
 
 @media only screen and (max-width: 576px) {
   .padleft {
-    margin-top: 2%;
+    margin-top: 6%;
   }
 
   .sidebox {
@@ -590,7 +633,20 @@ a.disabled {
     font-size: 2rem;
   }
 
-  .btn {
+  .btn, .github {
     font-size: 1.8rem;
+  }
+
+  .fa-github, .fa-google {
+    font-size: 1.6rem !important;
+  }
+
+  .padsize li {
+    font-size: 1.6rem;
+    padding: 15px;
+  }
+
+  .rules-heading {
+    font-size: 3rem;
   }
 }

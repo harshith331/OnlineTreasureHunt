@@ -62,6 +62,10 @@
         <button onclick="window.location='{% url 'social:begin' 'google-oauth2' %}?next={{ request.path }}';"
           class="btn-lg btn"><i class="fa fa-google"></i> | Login with Google</button>
       </p>
+      <p>
+        <button onclick="window.location='{% url 'social:begin' 'google-oauth2' %}?next={{ request.path }}';"
+          class="btn-lg github"><i class="fab fa-github"></i> | Login with GitHub</button>
+      </p>
     </div>
   </div>
 
