@@ -35,7 +35,9 @@ def index(request):
 
 
 def save_profile(backend, user, response, *args, **kwargs):
-    if backend.name == 'facebook':
+    print(backend.name)
+    print(response.items())
+    if backend.name == 'github':
         profile = user
         try:
             player = models.player.objects.get(user=profile)
@@ -43,6 +45,7 @@ def save_profile(backend, user, response, *args, **kwargs):
             player = models.player(user=profile)
             player.name = response.get('name')
             player.timestamp = datetime.datetime.now()
+            player.profile_url = response.get('avatar_url')
             player.save()
     elif backend.name == 'google-oauth2':
         profile = user
