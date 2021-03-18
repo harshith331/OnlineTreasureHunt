@@ -63,7 +63,7 @@
 }
 
 #audio-progress {
-  background-color: teal;
+  background-color: #808000;
   height: 7px;
   width: 0;
 }
@@ -91,7 +91,7 @@
     cursor: pointer;
     /* background: #434343; */
     background: white;
-    box-shadow: -80px 0 0 80px teal;
+    box-shadow: -80px 0 0 80px #808000;
   }
 }
 

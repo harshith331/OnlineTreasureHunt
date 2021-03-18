@@ -4,121 +4,91 @@
 
 <!-- Problem Statement and Hint -->
 
-<div class="lead question">
-  <h2>Q. {{ level.text }}</h2>
+<div class="lead">
+  <h2 class="question">Q. {{ level.text }}</h2>
 </div>
 {%ifnotequal level.hint "na"%}
 
-<div class="alert alert-success" role="alert">
-  <strong style="color: white;">Hint:</strong>
+<div class="hint">
+  <strong>Hint:</strong>
   {{level.hint}}
 </div>
 {%endifnotequal%}
 
-<!-- Tab based hints -->
+<div class="hint-container">
+  {% if level.display_image %}
+    <!-- Display image -->
+    <div class="jumbotron border-shadow image-div"
+      style="margin-top:11px;background-color:rgba(255, 255, 255, 0.1);text-align: center; display: flex; justify-content: center;">
+      <img class="img-responsive" src="{{level.image.url}}" />
+    </div>
+  {% endif %}
 
-<div class="row">
-  <div class="col">
-    <div class="panel with-nav-tabs panel-default">
-      <div class="panel-heading" style="background-color: transparent;">
-        <ul class="nav nav-tabs">
-          <li class="active hint-list-item"><a href="#image-hint" data-toggle="tab" class="hint-title"><i class="far fa-image"></i></a></li>
-          {% if level.display_audio %}
-            <li class="hint-list-item"><a href="#audio-hint" data-toggle="tab" class="hint-title"><i class="fas fa-music"></i></a></li>
-          {% else %}
-            <li class="hint-list-item"><a href="#" data-toggle="tab" class="hint-title disabled"><i class="fas fa-music"></i></a></li>
-          {% endif %}
-          
-          {% if level.display_video %}
-            <li class="hint-list-item"><a href="#video-hint" data-toggle="tab" class="hint-title"><i class="fas fa-video"></i></a></li>
-          {% else %}
-            <li class="hint-list-item"><a href="#" data-toggle="tab" class="hint-title disabled"><i class="fas fa-video"></i></a></li>
-          {% endif %}
-        </ul>
-      </div>
-      <div class="panel-body">
-        <div class="tab-content">
-          <div class="tab-pane fade in active" id="image-hint">
-            <!-- Image for the Question -->
-            {%if level.image.url != '/media/images/level1.jpg' %}
-              <div class="jumbotron border-shadow"
-                style="margin-top:15px;background-color:rgba(255, 255, 255, 0.4);text-align: center; display: flex; justify-content: center;">
-                <img class="img-responsive hint-image" src="{{level.image.url}}"/>
-              </div>
-            {%endif%}
+  {% if level.display_audio %}
+    <!-- Display audio -->
+    <div class="song-detail container-fluid">
+      <div class="card mb-4" id="audio-card"
+        style="box-shadow: -5px -5px 15px black; border-radius: 15px; margin: 0 auto;">
+        <div class="bg-video-container">
+          <video id="background-video" src="https://pixabay.com/videos/download/video-37169_medium.mp4"
+            loop></video>
+        </div>
+        <div class="card-body">
+          <div class="audio-progress-bar">
+            <!-- <input type="range" min="0" max="100" value="0" id="audio-progress" step="1"> -->
+            <div id="audio-progress"></div>
           </div>
-          <div class="tab-pane fade" id="audio-hint">
-          {% if level.display_audio %}
-            <!-- AUDIO HINT -->
-            <div class="song-detail container-fluid">
-              <div class="card mb-4" id="audio-card" style="box-shadow: -5px -5px 15px black; border-radius: 15px; margin: 0 auto;">
-                <div class="bg-video-container">
-                  <video id="background-video" src="https://pixabay.com/videos/download/video-37169_medium.mp4" loop></video>
-                </div>
-                  <div class="card-body">
-                  <div class="audio-progress-bar">
-                    <!-- <input type="range" min="0" max="100" value="0" id="audio-progress" step="1"> -->
-                    <div id="audio-progress"></div>
-                  </div>
-                  <div class="audio-controls">
-                    <!-- Play and pause button -->
-                    <ion-icon id="audio-play-pause" name="play"></ion-icon>
-            
-                    <span class="audio-volume-controls">
-                      <ion-icon class="volume-icon" id="mute" name="volume-mute"></ion-icon>
-                      <input id="audio-vol-control" type="range" min="0" max="100" step="1"></input>
-                      <ion-icon class="volume-icon" id="max-volume" name="volume-high"></ion-icon>
-                    </span>
-                  </div>
-                  <audio src="{{ level.audio.url }}" id="song"></audio>
-                </div>
-              </div>
-            </div>
-          {% else %}
-            <h1>Audio Hint is not available for this Question</h1>
-          {% endif %}
+          <div class="audio-controls">
+            <!-- Play and pause button -->
+            <ion-icon id="audio-play-pause" name="play"></ion-icon>
+
+            <span class="audio-volume-controls">
+              <ion-icon class="volume-icon" id="mute" name="volume-mute"></ion-icon>
+              <input id="audio-vol-control" type="range" min="0" max="100" step="1"></input>
+              <ion-icon class="volume-icon" id="max-volume" name="volume-high"></ion-icon>
+            </span>
           </div>
-          <div class="tab-pane fade" id="video-hint">
-          {% if level.display_video %}
-            <!-- Video Hint -->
-            <div class="card mb-4" id="video-card" style="box-shadow: -5px -5px 15px black; border-radius: 15px; margin: 0 auto;">
-              <div class="video-container">
-                <video src="{{ level.video.url }}" id="video" type="video/mp4"></video>
-              </div>
-              <div class="card-body">
-                <div class="video-progress-bar">
-                  <div id="video-progress"></div>
-                  <!-- <input type="range" id="video-progress" min="0" max="100" value="0" step="1"> -->
-                </div>
-                
-                <div class="video-controls">
-                  <ion-icon id="video-play-pause" name="play"></ion-icon>
-                  <span class="video-volume-controls">
-                    <ion-icon class="volume-icon" id="mute" name="volume-mute"></ion-icon>
-                    <input id="video-vol-control" type="range" min="0" max="100" step="1"></input>
-                    <ion-icon class="volume-icon" id="max-volume" name="volume-high"></ion-icon>
-                  </span>
-                </div>
-              </div>
-            </div>
-          {% else %}
-            <h1>Video Hint is not available for this Question</h1>
-          {% endif %}
-          </div>
+          <audio src="{{ level.audio.url }}" id="song"></audio>
         </div>
       </div>
     </div>
-  </div>
+  {% endif %}
+
+  {% if level.display_video %}
+    <!-- Display video -->
+    <div class="card mb-4" id="video-card"
+      style="box-shadow: -5px -5px 15px black; border-radius: 15px; margin: 0 auto;">
+      <div class="video-container">
+        <video src="{{ level.video.url }}" id="video" type="video/mp4"></video>
+      </div>
+      <div class="card-body">
+        <div class="video-progress-bar">
+          <div id="video-progress"></div>
+          <!-- <input type="range" id="video-progress" min="0" max="100" value="0" step="1"> -->
+        </div>
+
+        <div class="video-controls">
+          <ion-icon id="video-play-pause" name="play"></ion-icon>
+          <span class="video-volume-controls">
+            <ion-icon class="volume-icon" id="mute" name="volume-mute"></ion-icon>
+            <input id="video-vol-control" type="range" min="0" max="100" step="1"></input>
+            <ion-icon class="volume-icon" id="max-volume" name="volume-high"></ion-icon>
+          </span>
+        </div>
+      </div>
+    </div>
+  {% endif %}
 </div>
+
+<!-- Tab based hints -->
+
 
 <div class="col-lg-12 border-shadow answer-box">
   {% block msgblock1 %}
   {% if messages %}
-    {% for message in messages %}
-    <div
-    class="alert {% if message.tags %} alert-{% if message.tags == "error" %}danger{% else %}{{ message.tags }}{% endif %}"
-    {% endif %} role="alert">{{ message }}</div>
-    {% endfor %}
+  {% for message in messages %}
+  <div class="wrong-ans">{{ message }}</div>
+  {% endfor %}
   {% endif %}
   {% endblock %}
 
@@ -126,7 +96,8 @@
     {% csrf_token %}
     <div class="form-row">
       <div class="col-sm-9 input-group-lg" style="margin-bottom: 10px;">
-        <input type="text" name="ans" class="form-control form-control-lg" value="" size="50" autofocus placeholder="Enter your Answer" />
+        <input type="text" name="ans" class="form-control form-control-lg" value="" size="50" autofocus
+          placeholder="Enter your Answer" />
       </div>
       <div class="col-sm-3">
         <input type="submit" class="submit btn-lg btn-block" value="Submit Answer" />
@@ -137,10 +108,9 @@
 </div>
 <br><br>
 <div class="col-lg-12">
-  <div class="sidebox border-shadow" style="padding:15px;">
-    <p style="font-size:24px;text-align:center; color: white;">Number of people who crossed this level</p>
-    <p style="text-align:center;font-size:35px;color:green">{{level.numuser}}</p>
-    <p style="text-align:center;font-size:25px;color:#008080">Accuracy: {{level.accuracy}}</p>
+  <div class="sidebox border-shadow" style="padding:15px; font-family: 'Squada One';" id="stats">
+    <p class="people-crossed">Number of people who crossed this level: <span style="color: #808000">{{level.numuser}}</span></p>
+    <p class="accuracy">Accuracy: {{level.accuracy}}</p>
   </div>
 </div>
 

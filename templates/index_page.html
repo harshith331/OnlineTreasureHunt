@@ -55,17 +55,11 @@
           So...
           Ready, Set, HUNT! <br><br> P.S: Thumb rule for this event- "When life gives you questions, Google your answers!"
         </p>
-      <!-- <p style="font-size:40px; color:rgb(255, 255, 255); font-weight: 700;">Login to Start playing!</p> -->
-      <!-- <p><button onclick="window.location='{% url 'social:begin' 'facebook' %}?next={{ request.path }}';"
-          class="btn-lg btn-facebook"><i class="fa fa-facebook"></i> | Login with Facebook</button></p> -->
-      <p>
-        <button onclick="window.location='{% url 'social:begin' 'google-oauth2' %}?next={{ request.path }}';"
-          class="btn-lg btn"><i class="fa fa-google"></i> | Login with Google</button>
-      </p>
-      <p>
-        <button onclick="window.location='{% url 'social:begin' 'github' %}?next={{ request.path }}';"
-          class="btn-lg github"><i class="fab fa-github"></i> | Login with GitHub</button>
-      </p>
+          <button onclick="window.location='{% url 'social:begin' 'google-oauth2' %}?next={{ request.path }}';"
+            class="btn-lg btn"><i class="fab fa-google"></i> | Login with Google</button>
+          <button onclick="window.location='{% url 'social:begin' 'github' %}?next={{ request.path }}';"
+            class="btn-lg github"><i class="fab fa-github"></i> | Login with GitHub</button>
+      </div>
     </div>
   </div>
 

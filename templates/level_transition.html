@@ -4,13 +4,15 @@
 <!--background audio-->
 
 <audio autoplay="autoplay" loop="true">
-  <source src="/static/sounds/transition.mp3" />
+  <!-- <source src="/static/sounds/transition.mp3" /> -->
 </audio>
 
 
 <head>
   <!-- <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'> -->
   <link href="https://fonts.googleapis.com/css2?family=Forum&family=Ledger&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Squada+One&display=swap" rel="stylesheet">
   <link href="{% static 'css/stars.css' %}" rel="stylesheet">
   <script src="{% static 'js/particle.js' %}"></script>
 
@@ -21,17 +23,12 @@
       margin: 0;
     }
 
-    .bodypad {
-      background-image: url("../static/img/landing.png") !important;
-      background-repeat: no-repeat;
-    }
-
     #particles-js {
       position: absolute;
       width: 100%;
       height: 100%;
       background-color: #b61924;
-      background-image: url("");
+      background-image: url("../static/img/landing.png") !important;
       background-repeat: no-repeat;
       background-size: cover;
       background-position: 50% 50%;
@@ -49,8 +46,8 @@
     .next {
       background-color: transparent;
       border-color: blue;
-      font-family: 'Akaya Telivigala', cursive;
-      font-size: 2.5rem;
+      font-family: 'Squada One', cursive;
+      font-size: 1.4rem;
       color: #fff;
       background-image: -webkit-linear-gradient(45deg, blue 50%, transparent 50%);
       background-image: linear-gradient(45deg, blue 50%, transparent 50%);
@@ -58,11 +55,20 @@
       background-size: 400%;
       -webkit-transition: background 600ms ease-in-out;
       transition: background 600ms ease-in-out;
+      padding: 12px;
+      border-radius: 10px;
     }
 
     .next:hover {
       background-position: 0;
       color: #fff;
+      cursor: pointer;
+    }
+
+    #transition-img {
+      margin-top: 20px;
+      width: 200px;
+      height: auto;
     }
   </style>
 
@@ -79,7 +85,7 @@
         <button class="next"><b>Next Question</b></button>
       </a>
     </div>
-    <img id="transition-img" src="{% static 'img/AIMLV9.png' %}" alt="">
+    <img id="transition-img" src="{% static 'img/AIMLV96.png' %}" alt="">
   </div>
 
 </body>
