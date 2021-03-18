@@ -175,116 +175,6 @@ td{
   border-radius: 2px bold white;
 }
 
-/* CSS for the tab based hint system */
-
-
-.hint-list-item {
-  width: 33%;
-  margin: 0 auto;
-  text-align: center;
-}
-
-
-.nav-tabs {
-  border-bottom: none;
-}
-
-.panel-heading {
-  padding: 0;
-  background-color: transparent;
-}
-
-
-.hint-title {
-  margin-right: 0px;
-  margin-left: 0px;
-  font-size: 2rem;
-  background-color: #272e38;
-  color: #fff;
-  border: none;
-}
-
-.tab-content {
-  text-align: center;
-  line-height: 25px;
-  border-top: 5px solid rgb(243, 102, 51);
-  border-bottom: 5px solid rgb(243, 102, 51);
-  /* padding: 30px 0; */
-  padding: 15px 0 5px 0;
-}
-
-.with-nav-tabs {
-  background-color: transparent;
-  border: none;
-}
-
-.panel-body {
-  padding: 0;
-}
-
-
-.with-nav-tabs.panel-default .nav-tabs > li > a,
-.with-nav-tabs.panel-default .nav-tabs > li > a:hover,
-.with-nav-tabs.panel-default .nav-tabs > li > a:focus {
-  color: #fff;
-}
-
-/* On Hover or Focus */
-
-.with-nav-tabs.panel-default .nav-tabs > .open > a,
-.with-nav-tabs.panel-default .nav-tabs > .open > a:hover,
-.with-nav-tabs.panel-default .nav-tabs > .open > a:focus,
-.with-nav-tabs.panel-default .nav-tabs > li > a:hover,
-.with-nav-tabs.panel-default .nav-tabs > li > a:focus {
-  color: #fff;
-	background: rgb(243, 102, 51);
-  border-color: transparent;
-  transition: background 0.3s linear;
-}
-
-/* Active */
-.with-nav-tabs.panel-default .nav-tabs > li.active > a,
-.with-nav-tabs.panel-default .nav-tabs > li.active > a:hover,
-.with-nav-tabs.panel-default .nav-tabs > li.active > a:focus {
-  color: #fff;
-  background: rgb(243, 102, 51);
-	/* background-color: #fff; */
-	border-color: transparent;
-  border-bottom-color: transparent;
-}
-
-li.active > a:after {
-  content: "";
-  position: absolute;
-  bottom: -40px;
-  left: 45%;
-  border: 15px solid transparent;
-  border-top-color: rgb(243, 102, 51);
-}
-
-a.disabled {
-  pointer-events: none;
-  cursor: default;
-}
-
-/* CSS for the Questions */
-
-.question {
-  margin-left: -10px;
-  margin-bottom: 20px;
-  margin-top: 20px;
-  margin-right: -20px;
-  font-family: 'Montserrat', sans-serif;
-  color: white;
-  text-align: left;
-}
-
-.answer-box {
-  padding: 10px 0 10px 0;
-  margin-bottom: 20px;
-  margin-top: 10px;
-}
-
 /* NAVBAR */
 
 .navbar-btn {
@@ -299,7 +189,7 @@ a.disabled {
 .btn {
   background-color: transparent;
   border-color: red;
-  font-family: 'Akaya Telivigala', cursive;
+  font-family: 'Squada One', sans-serif;
   font-size: 2.5rem; 
   color: #fff;
   background-image: -webkit-linear-gradient(45deg, red 50%, transparent 50%);
@@ -308,7 +198,6 @@ a.disabled {
   background-size: 400%;
   -webkit-transition: background 600ms ease-in-out;
   transition: background 600ms ease-in-out;
-  margin-top: 0.5em;
   margin-bottom: 0.5em;
 }
 
@@ -320,7 +209,7 @@ a.disabled {
 .github {
   background-color: transparent;
   border-color: blue;
-  font-family: 'Akaya Telivigala', cursive;
+  font-family: 'Squada One', sans-serif;
   font-size: 2.5rem; 
   color: #fff;
   background-image: -webkit-linear-gradient(45deg, blue 50%, transparent 50%);
@@ -329,7 +218,8 @@ a.disabled {
   background-size: 400%;
   -webkit-transition: background 600ms ease-in-out;
   transition: background 600ms ease-in-out;
-  margin-bottom: 0.5em;
+  /* margin-bottom: 0.5em; */
+  margin-left: 20px;
 }
 
 .github:hover {
@@ -338,17 +228,19 @@ a.disabled {
 }
 
 .lead {
-  font-family: 'Akaya Telivigala', cursive; 
+  font-family: 'Squada One', sans-serif;
   font-size: 3rem;
-  line-height: 1;
+  line-height: 1.15;
   color: #c6e2ff;
   padding-top: 1em;
+  margin-right: 1.2rem;
+  margin-left: 1.2rem;
 }
 
 .oth {
   text-align:center;
-  font-family: 'Orbitron', sans-serif;
-  font-size: 6rem;
+  font-family: 'Squada One', cursive;
+  font-size: 7rem;
   color:rgb(255, 255, 255); 
   font-weight: 800;
   -webkit-animation: neon 0.08s ease-in-out infinite alternate;
@@ -358,26 +250,26 @@ a.disabled {
 /*-- Animation Keyframes --*/
 @-webkit-keyframes neon {
   from {
-    text-shadow: 0 0 6px rgba(202, 228, 225, 0.92), 0 0 30px rgba(202, 228, 225, 0.34), 0 0 12px rgba(30, 132, 242, 0.52), 0 0 21px rgba(30, 132, 242, 0.92), 0 0 34px rgba(30, 132, 242, 0.78), 0 0 54px rgba(30, 132, 242, 0.92);
+    text-shadow: 0 0 6px rgba(128, 128, 0, 0.92), 0 0 30px rgba(128, 128, 0, 0.34), 0 0 12px rgba(128, 128, 0, 0.52), 0 0 21px rgba(30, 132, 242, 0.40), 0 0 34px rgba(30, 132, 242, 0.78), 0 0 54px rgba(30, 132, 242, 0.92);
   }
   to {
-    text-shadow: 0 0 6px rgba(202, 228, 225, 0.98), 0 0 30px rgba(202, 228, 225, 0.42), 0 0 12px rgba(30, 132, 242, 0.58), 0 0 22px rgba(30, 132, 242, 0.84), 0 0 38px rgba(30, 132, 242, 0.88), 0 0 60px #1e84f2;
+    text-shadow: 0 0 6px rgba(128, 128, 0, 0.98), 0 0 30px rgba(128, 128, 0, 0.42), 0 0 12px rgba(128, 128, 0, 0.58), 0 0 22px rgba(30, 132, 242, 0.40), 0 0 38px rgba(30, 132, 242, 0.88), 0 0 60px #1e84f2;
   }
 }
 
 @keyframes neon {
   from {
-    text-shadow: 0 0 6px rgba(202, 228, 225, 0.92), 0 0 30px rgba(202, 228, 225, 0.34), 0 0 12px rgba(30, 132, 242, 0.52), 0 0 21px rgba(30, 132, 242, 0.92), 0 0 34px rgba(30, 132, 242, 0.78), 0 0 54px rgba(30, 132, 242, 0.92);
+    text-shadow: 0 0 6px rgba(128, 128, 0, 0.92), 0 0 30px rgba(128, 128, 0, 0.34), 0 0 12px rgba(128, 128, 0, 0.52), 0 0 21px rgba(30, 132, 242, 0.40), 0 0 34px rgba(30, 132, 242, 0.78), 0 0 54px rgba(30, 132, 242, 0.92);
   }
   to {
-    text-shadow: 0 0 6px rgba(202, 228, 225, 0.98), 0 0 30px rgba(202, 228, 225, 0.42), 0 0 12px rgba(30, 132, 242, 0.58), 0 0 22px rgba(30, 132, 242, 0.84), 0 0 38px rgba(30, 132, 242, 0.88), 0 0 60px #1e84f2;
+    text-shadow: 0 0 6px rgba(128, 128, 0, 0.98), 0 0 30px rgba(128, 128, 0, 0.42), 0 0 12px rgba(128, 128, 0, 0.58), 0 0 22px rgba(30, 132, 242, 0.40), 0 0 38px rgba(30, 132, 242, 0.88), 0 0 60px #1e84f2;
   }
 }
 
 .rules2 {
   border-radius: 30px;
   margin-bottom: 10px;
-  margin-top: 10%;
+  margin-top: 17%;
   text-shadow:1px 1px 0px #888;
   text-align:center;
   background-color:rgba(52,60,65,.5);
@@ -386,13 +278,12 @@ a.disabled {
 }
 
 .rules-heading {
-  padding-top: 0.5em;
+  padding-top: 1rem;
   color: white;
   font-weight:bold;
-  font-size: 4.5rem;
+  font-size: 6.5rem;
   text-align: center;
-  font-family: 'Orbitron', sans-serif;
-  font-weight: 600;
+  font-family: 'Squada One', cursive;
 }
 
 .padsize {
@@ -402,9 +293,9 @@ a.disabled {
 }
 
 .padsize li {
-  font-size: 3rem;
-  padding: 25px;
-  font-family: 'Quicksand', sans-serif;
+  font-size: 2.6rem;
+  padding: 15px;
+  font-family: 'Roboto Condensed', sans-serif;
   color: #c6e2ff;
 }
 
@@ -420,16 +311,17 @@ a.disabled {
 
 .submit {
   background-color: transparent;
-  border-color: blue;
-  font-family: 'Akaya Telivigala', cursive;
-  font-size: 2.5rem; 
+  border-color: #808000;
+  font-family: 'Ubuntu Mono', monospace;
+  font-size: 2rem; 
   color: #fff;
-  background-image: -webkit-linear-gradient(45deg, blue 50%, transparent 50%);
-  background-image: linear-gradient(45deg, blue 50%, transparent 50%);
+  background-image: -webkit-linear-gradient(45deg, #808000 50%, transparent 50%);
+  background-image: linear-gradient(45deg, #808000 50%, transparent 50%);
   background-position: 100%;
   background-size: 400%;
   -webkit-transition: background 600ms ease-in-out;
   transition: background 600ms ease-in-out;
+  backdrop-filter: blur(3px);
 }
 
 .submit:hover {
@@ -490,6 +382,7 @@ a.disabled {
 .top3 .item .name {
   font-size: 1.6rem;
   margin-bottom: 0.5rem;
+  font-family: 'Roboto', sans-serif;
 }
 .top3 .item .score {
   /* opacity: 0.5; */
@@ -574,6 +467,7 @@ a.disabled {
           flex-grow: 2;
   flex-basis: 10rem;
   font-size: 1.5rem;
+  font-family: 'Roboto', sans-serif;
 }
 .list .item .score {
   margin-right: 1.5rem;
@@ -593,26 +487,110 @@ a.disabled {
   opacity: 0.8;
 }
 
+/* CSS for the Questions */
+
+.question {
+  text-align: left;
+  font-size: 3.5rem;
+}
+
+.answer-box {
+  padding: 10px 0 10px 0;
+  margin-bottom: 20px;
+  margin-top: 10px;
+}
+
+.hint{
+  margin-left: 1.2rem;
+  margin-right: 1.2rem;
+  font-family: 'Ubuntu Mono', monospace;
+  font-size: 2rem;
+  background-color:rgba(52,60,65,.5);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  border-radius: 15px;
+  padding: 12px;
+  color: white;
+}
+
+.hint-container {
+  margin-left: 1.2rem;
+  margin-right: 1.2rem;
+}
+
+.image-div {
+  padding: 30px !important;
+  border-radius: 40px;
+}
+
+.form-control {
+  color: #949ba2 !important;
+  border: none !important;
+  border-radius: 10px !important;
+  transition: none !important;
+  background-color:rgb(52,60,65) !important;
+  font-family: 'Ubuntu Mono', monospace;
+}
+
+
+.wrong-ans {
+  margin-left: 1.2rem;
+  margin-right: 1.2rem;
+  margin-bottom: 2rem;
+  font-family: 'Ubuntu Mono', monospace;
+  font-size: 2rem;
+  background-color:rgba(52,60,65,.5);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  border-radius: 15px;
+  padding: 12px;
+  color: white;
+}
+
+.people-crossed {
+  font-size:24px;
+  text-align:center; 
+  color: white;
+}
+
+.accuracy {
+  text-align:center;
+  font-size:25px;
+  color:#008080;
+}
 @media only screen and (max-width: 480px) {
-  .top3 .item.one {
-    width: 8rem;
-    height: 11rem;
-  }
   .top3 .item {
-    width: 5rem;
+    width: 9rem;
+    height: 11rem;
     margin: 20px 5px;
+    padding-top: 1.5rem !important;
+  }
+
+  .top3 .one {
+    width: 10rem !important;
+    height: 13rem !important;
+    padding-top: 2.5rem !important;
   }
 
   .top3 .item.one .pic {
     width: 4rem;
     height: 4rem;
-    left: 2rem;
+    left: 2.8rem;
   }
 
   .top3 .item .pic {
-    width: 3rem;
-    height: 3rem;
-    left: 1rem;
+    width: 4rem;
+    height: 4rem;
+    left: 2.5rem;
+  }
+
+  .top3 .item .name {
+    font-size: 1.2rem;
+  }
+
+  .list {
+    margin-left: 1rem;
+    margin-right: 1rem;
   }
 }
 
@@ -635,6 +613,7 @@ a.disabled {
 
   .btn, .github {
     font-size: 1.8rem;
+    margin-left: 0;
   }
 
   .fa-github, .fa-google {
@@ -647,6 +626,23 @@ a.disabled {
   }
 
   .rules-heading {
-    font-size: 3rem;
+    font-size: 4rem;
+  }
+
+  .question {
+    text-align: left;
+    font-size: 2.6rem;
+  }
+
+  .submit {
+    font-size: 1.6rem;
+  }
+
+  .hint, .wrong-ans {
+    font-size: 1.5rem;
+  }
+
+  .people-crossed, .accuracy {
+    font-size: 1.8rem !important;
   }
 }
