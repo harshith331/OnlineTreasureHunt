@@ -66,8 +66,11 @@ def answer(request):
     numlevel = config.numlevel
 
     ans = ""
+    level_answer = ""
     if request.method == 'POST':
         ans = request.POST.get('ans')
+        ans = ans.replace(" ", "").lower()
+
     player = models.player.objects.get(user_id=request.user.pk)
     if player.current_level <= lastlevel:
         level = models.level.objects.get(l_number=player.current_level)
@@ -76,7 +79,7 @@ def answer(request):
             return render(request, 'win.html', {'player': player})
         return render(request, 'finish.html', {'player': player})
 
-    if ans == level.answer:
+    if ans == level.answer.replace(" ", "").lower():
         player.current_level = player.current_level + 1
         player.score = player.score + 10
         player.timestamp = datetime.datetime.now(tz=timezone.utc)
@@ -94,7 +97,8 @@ def answer(request):
             return render(request, 'finish.html', {'player': player})
 
     elif ans == "":
-        messages.error(request, "Please enter answer!")
+        if request.method == "POST":
+            messages.error(request, "Please enter answer!")
         return render(request, 'level.html', {'player': player, 'level': level})
 
     else:
