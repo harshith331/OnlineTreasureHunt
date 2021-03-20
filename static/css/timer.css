@@ -1,13 +1,22 @@
+.time-cont {
+  margin-top: 16%;
+}
+
 .timer-header {
   color: white;
-  font-family:'Capriola',sans-serif;
-  font-size: 6rem;
+  font-family:'Squada One',sans-serif;
+  font-size: 7rem;
   margin-bottom: 30px;
 }
 
 .container-t {
-  font-family: "Poppins", sans-serif;
+  font-family: "Squada One", sans-serif;
   text-align: center;
+}
+
+.timer-row {
+  display: flex;
+  justify-content: center;
 }
 
 .timer-col {
@@ -52,6 +61,9 @@
 }
 
 @media screen and (max-width: 700px) {
+  .time-cont {
+    margin-top: 30%;
+  }
   .timer-header {
     font-size: 3rem;
   }

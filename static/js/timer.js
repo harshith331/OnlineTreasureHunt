@@ -6,7 +6,7 @@ const second = 1000,
 var time = document.getElementsByClassName("opentime")[0].innerText;
 console.log(time);
 
-let countDown = new Date(time).getTime(),
+let countDown = time;
   x = setInterval(function () {
     let now = new Date().getTime(),
       distance = countDown - now;

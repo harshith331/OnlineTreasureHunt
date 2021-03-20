@@ -39,8 +39,15 @@ font-family:'Capriola',sans-serif;font-size:200%!important;color:#1B809E!importa
 }
 .fontincr li a{font-size: 18px;}
 
-.container1{box-shadow: 0px 0px 8px #000;background-color:#212529;}
-.navbar-right{margin-right: 5px}
+.container1{
+  box-shadow: 0px 0px 8px #000;
+  background-color:rgba(52,60,65,.5);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+}
+.navbar-right{
+  margin-right: 5px;
+}
 .border-shadow{box-shadow: 0px 0px 8px #000}
 .nav-justified {background-color: white}
 .bodypad{
@@ -58,11 +65,16 @@ font-family:'Capriola',sans-serif;font-size:200%!important;color:#1B809E!importa
 .rules{border:5px solid #eee;border-radius: 5px;margin-bottom: 10px;background-color:rgba(255, 255, 255, 0.85)}
 
 .nav li  a:hover {
-background-color: #ddd;
-box-shadow:0px 3px 7px rgba(0, 0, 0, 0.15) inset;
-background-image: none;
+  box-shadow:0px 3px 7px rgba(0, 0, 0, 0.15) inset;
+  background-image: none;
 }
-.nav li  a{color:#1B809E;}
+
+.navbar-nav>li>a {
+  background-color: transparent !important;
+}
+.nav li  a{
+  color:#c6e2ff;
+}
 
  @media screen and (max-width: 750px) {
   .container-fluid{
@@ -208,12 +220,13 @@ td{
 
 .github {
   background-color: transparent;
-  border-color: blue;
+  border-width: 2px;
+  border-color: #000;
   font-family: 'Squada One', sans-serif;
   font-size: 2.5rem; 
   color: #fff;
-  background-image: -webkit-linear-gradient(45deg, blue 50%, transparent 50%);
-  background-image: linear-gradient(45deg, blue 50%, transparent 50%);
+  background-image: -webkit-linear-gradient(45deg, #000 50%, transparent 50%);
+  background-image: linear-gradient(45deg, #000 50%, transparent 50%);
   background-position: 100%;
   background-size: 400%;
   -webkit-transition: background 600ms ease-in-out;

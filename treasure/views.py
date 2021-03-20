@@ -94,8 +94,8 @@ def answer(request):
             return render(request, 'finish.html', {'player': player})
 
     elif ans == "":
-        return render(request, 'level.html', {'player': player, 'level': level})
         messages.error(request, "Please enter answer!")
+        return render(request, 'level.html', {'player': player, 'level': level})
 
     else:
         level.wrong = level.wrong + 1
