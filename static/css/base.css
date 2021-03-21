@@ -571,6 +571,29 @@ td{
   font-size:25px;
   color:#008080;
 }
+
+.more {
+  color: white; 
+  text-align: center; 
+  font-family: 'Squada One', cursive; 
+  font-size: 8rem;
+}
+
+.congo {
+  text-align:center; 
+  color: #f5f5f5;
+  font-family:'Squada One',sans-serif; 
+  font-size: 5.5rem;
+}
+.img-container {
+  display: flex;
+  justify-content: center;
+}
+
+#finish_img {
+  width: 300px;
+  height: auto;
+}
 @media only screen and (max-width: 480px) {
   .top3 .item {
     width: 9rem;
@@ -657,5 +680,13 @@ td{
 
   .people-crossed, .accuracy {
     font-size: 1.8rem !important;
+  }
+
+  .more {
+    font-size: 5rem;
+  }
+
+  .congo {
+    font-size: 4rem;
   }
 }
