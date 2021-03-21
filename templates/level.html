@@ -2,80 +2,116 @@
 
 {%block content%}
 
-<!-- Example row of columns -->
-<div class="row">
+<!-- Problem Statement and Hint -->
 
-      <!-- Jumbotron -->
-      {%if level.image.url != '/media/images/level1.jpg' %}
-      <div class="jumbotron border-shadow" style="margin-top:15px;background-color:rgba(255, 255, 255, 0.4);text-align: center; display: flex; justify-content: center;">
-        <img class="img-responsive" src="{{level.image.url}}" style="max-width: 400px; width: 100%;"/>
-      </div>
-      {%endif%}
-      <div class="col-lg-12 padleft" >
-        {%if level.audio.url != '/media/audios/default.mp3' %}
-          <div  style="font-size: 20px;text-align: center;color: white;">
-            <p>Audio Hint</p>
-            <audio controls="" src="{{level.audio.url}}">
-            </audio>
+<div class="lead">
+  <h2 class="question">Q. {{ level.text }}</h2>
+</div>
+{%ifnotequal level.hint "na"%}
+
+<div class="hint">
+  <strong>Hint:</strong>
+  {{level.hint}}
+</div>
+{%endifnotequal%}
+
+<div class="hint-container">
+  {% if level.display_image %}
+    <!-- Display image -->
+    <div class="jumbotron border-shadow image-div"
+      style="margin-top:11px;background-color:rgba(255, 255, 255, 0.1);text-align: center; display: flex; justify-content: center;">
+      <img class="img-responsive" src="{{level.image.url}}" />
+    </div>
+  {% endif %}
+
+  {% if level.display_audio %}
+    <!-- Display audio -->
+    <div class="song-detail container-fluid">
+      <div class="card mb-4" id="audio-card"
+        style="box-shadow: -5px -5px 15px black; border-radius: 15px; margin: 0 auto;">
+        <div class="bg-video-container">
+          <video id="background-video" src="https://pixabay.com/videos/download/video-37169_medium.mp4"
+            loop></video>
+        </div>
+        <div class="card-body">
+          <div class="audio-progress-bar">
+            <!-- <input type="range" min="0" max="100" value="0" id="audio-progress" step="1"> -->
+            <div id="audio-progress"></div>
           </div>
-        </div> 
-        <hr>
-        {%endif%}
-        <br>
+          <div class="audio-controls">
+            <!-- Play and pause button -->
+            <ion-icon id="audio-play-pause" name="play"></ion-icon>
 
-    <div class="col-lg-12 rules border-shadow" style="padding:25px">
-
-        {% block msgblock %}
-        {% if messages %}
-        {% for message in messages %}
-        <div class="alert {% if message.tags %} alert-{% if message.tags == "error" %}danger{% else %}{{ message.tags }}{% endif %}"{% endif %} role="alert">{{ message }}</div>
-        {% endfor %}
-        {% endif %}
-        {% endblock %}
-
-        </br>
-        <div class="lead" style="padding:10px; font-family: 'Montserrat', sans-serif;">
-        Q. {{ level.text }}
-        </div>
-        {%ifnotequal level.hint "na"%}
-        
-        <div class="alert alert-success" role="alert">
-          <strong style="color: black;">Hint:</strong>
-          {{level.hint}}
-        </div>
-        {%endifnotequal%}
-        </br>
-            
-        Enter your answer:
-        <br>
-        <form id="ans" method="post" action="/answer/">
-            {% csrf_token %}
-            <br> <input type="text" name="ans" class="form-control" value="" size="50" autofocus/>
-            <br />
-
-            <input type="submit" class="btn btn-primary btn-lg btn-block" value="Submit Answer" />
-
-        </form>
-      
-        </div>
-
-</div>
-
-<button class="toggle btn btn-success" style="margin-left:10px; border-radius: 20px;">SHOW STATUS</button>
-<br>
-<br>
-
-
-<div id="target" style="display: none;">
-   <div class="col-lg-12 padleft" >
-        <div class="sidebox border-shadow" style="padding:15px;">
-          <p style="font-size:24px;text-align:center;opacity:0.8;">Number of people who crossed this level</p>
-          <p style="text-align:center;font-size:35px;color:green">{{level.numuser}}</p>
-          <p style="text-align:center;font-size:25px;color:#008080">Accuracy: {{level.accuracy}}</p>
+            <span class="audio-volume-controls">
+              <ion-icon class="volume-icon" id="mute" name="volume-mute"></ion-icon>
+              <input id="audio-vol-control" type="range" min="0" max="100" step="1"></input>
+              <ion-icon class="volume-icon" id="max-volume" name="volume-high"></ion-icon>
+            </span>
+          </div>
+          <audio src="{{ level.audio.url }}" id="song"></audio>
         </div>
       </div>
+    </div>
+  {% endif %}
+
+  {% if level.display_video %}
+    <!-- Display video -->
+    <div class="card mb-4" id="video-card"
+      style="box-shadow: -5px -5px 15px black; border-radius: 15px; margin: 0 auto;">
+      <div class="video-container">
+        <video src="{{ level.video.url }}" id="video" type="video/mp4"></video>
+      </div>
+      <div class="card-body">
+        <div class="video-progress-bar">
+          <div id="video-progress"></div>
+          <!-- <input type="range" id="video-progress" min="0" max="100" value="0" step="1"> -->
+        </div>
+
+        <div class="video-controls">
+          <ion-icon id="video-play-pause" name="play"></ion-icon>
+          <span class="video-volume-controls">
+            <ion-icon class="volume-icon" id="mute" name="volume-mute"></ion-icon>
+            <input id="video-vol-control" type="range" min="0" max="100" step="1"></input>
+            <ion-icon class="volume-icon" id="max-volume" name="volume-high"></ion-icon>
+          </span>
+        </div>
+      </div>
+    </div>
+  {% endif %}
 </div>
 
+<!-- Tab based hints -->
+
+
+<div class="col-lg-12 border-shadow answer-box">
+  {% block msgblock1 %}
+  {% if messages %}
+  {% for message in messages %}
+  <div class="wrong-ans">{{ message }}</div>
+  {% endfor %}
+  {% endif %}
+  {% endblock %}
+
+  <form id="ans" method="post" action="/answer/">
+    {% csrf_token %}
+    <div class="form-row">
+      <div class="col-sm-9 input-group-lg" style="margin-bottom: 10px;">
+        <input type="text" name="ans" class="form-control form-control-lg" value="" size="50" autofocus
+          placeholder="Enter your Answer" />
+      </div>
+      <div class="col-sm-3">
+        <input type="submit" class="submit btn-lg btn-block" value="Submit Answer" />
+      </div>
+    </div>
+  </form>
+
+</div>
+<br><br>
+<div class="col-lg-12">
+  <div class="sidebox border-shadow" style="padding:15px; font-family: 'Squada One';" id="stats">
+    <p class="people-crossed">Number of people who crossed this level: <span style="color: #808000">{{level.numuser}}</span></p>
+    <p class="accuracy">Accuracy: {{level.accuracy}}</p>
+  </div>
 </div>
 
 {%endblock%}

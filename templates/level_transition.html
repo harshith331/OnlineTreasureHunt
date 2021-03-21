@@ -1,71 +1,214 @@
 {% load static %}
 <html>
 
-<!--background audio--> 
-  
-<audio autoplay="autoplay" loop="true"> 
-	<source src="/static/sounds/transition.mp3" />   
-</audio> 
+<!--background audio-->
+
+<audio autoplay="autoplay" loop="true">
+  <!-- <source src="/static/sounds/transition.mp3" /> -->
+</audio>
 
 
 <head>
-	<link href='http://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
+  <!-- <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'> -->
+  <link href="https://fonts.googleapis.com/css2?family=Forum&family=Ledger&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Squada+One&display=swap" rel="stylesheet">
   <link href="{% static 'css/stars.css' %}" rel="stylesheet">
-    	    	
-<style>
-.button {
-display: inline-block;
-padding: 15px 25px;
-font-size: 24px;
-cursor: pointer;
-text-align: center;
-text-decoration: none;
-outline: none;
-color: #fff;
-background-color: #4CAF50;
-border: none;
-border-radius: 15px;
-box-shadow: 0 9px #999;
-}
+  <script src="{% static 'js/particle.js' %}"></script>
 
-.button:hover {background-color: #3e8e41}
+  <style>
+    html,
+    body {
+      padding: 0;
+      margin: 0;
+    }
 
-.button:active {
-background-color: #3e8e41;
-box-shadow: 0 5px #666;
-transform: translateY(4px);
-}
+    #particles-js {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-color: #b61924;
+      background-image: url("../static/img/landing.png") !important;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: 50% 50%;
+    }
 
-</style>
+    #particle {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 0;
+    }
+
+    .next {
+      background-color: transparent;
+      border-color: blue;
+      font-family: 'Squada One', cursive;
+      font-size: 1.4rem;
+      color: #fff;
+      background-image: -webkit-linear-gradient(45deg, blue 50%, transparent 50%);
+      background-image: linear-gradient(45deg, blue 50%, transparent 50%);
+      background-position: 100%;
+      background-size: 400%;
+      -webkit-transition: background 600ms ease-in-out;
+      transition: background 600ms ease-in-out;
+      padding: 12px;
+      border-radius: 10px;
+    }
+
+    .next:hover {
+      background-position: 0;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    #transition-img {
+      margin-top: 20px;
+      width: 200px;
+      height: auto;
+    }
+  </style>
 
 </head>
-<body class="hidden">
-  <div id='stars'></div>
-  <div id='stars2'></div>
-  <div id='stars3'></div>
-  <div id='title'>
 
-  	<span>
-  		CONGRATULATIONS!!
-  	</span>
-  	<br>
-  	<span>
-  		CORRECT ANSWER!
-  	</span>
-  <div><a href="/answer"><div class="button"><b>Next Question</b></div></a></div>
+<body class="bodypad">
+  <div id="particle"></div>
 
-  <img src="static/img/AIMLV9.png" alt="">
-
+  <div id="content">
+    <h1 class="headings">CONGRATULATIONS!!</h1>
+    <h3 class="headings">CORRECT ANSWER</h3>
+    <div>
+      <a href="/answer">
+        <button class="next"><b>Next Question</b></button>
+      </a>
+    </div>
+    <img id="transition-img" src="{% static 'img/AIMLV96.png' %}" alt="">
   </div>
-  		
+
 </body>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 
 <script>
-	$(document).ready(function () {
+  $(document).ready(function () {
     $('div.hidden').fadeIn(50000).removeClass('hidden');
-});
+  });
+  var options = {
+    "particles": {
+      "number": {
+        "value": 30,
+        "density": {
+          "enable": true,
+          "value_area": 500
+        }
+      },
+      "color": {
+        "value": "#ffffff"
+      },
+      "shape": {
+        "type": ["circle", "triangle"],
+        "stroke": {
+          "width": 0,
+          "color": "#808000"
+        },
+        "polygon": {
+          "nb_sides": 5
+        },
+        "image": {
+          "src": "img/github.svg",
+          "width": 50,
+          "height": 50
+        }
+      },
+      "opacity": {
+        "value": 0.5,
+        "random": false,
+        "anim": {
+          "enable": false,
+          "speed": 0.5,
+          "opacity_min": 0.1,
+          "sync": false
+        }
+      },
+      "size": {
+        "value": 2,
+        "random": true,
+        "anim": {
+          "enable": false,
+          "speed": 0,
+          "size_min": 0.1,
+          "sync": false
+        }
+      },
+      "line_linked": {
+        "enable": true,
+        "distance": 200,
+        "color": "#808000",
+        "opacity": 0.6,
+        "width": 3
+      },
+      "move": {
+        "enable": true,
+        "speed": 3.5,
+        "direction": "none",
+        "random": false,
+        "straight": false,
+        "out_mode": "out",
+        "bounce": false,
+        "attract": {
+          "enable": false,
+          "rotateX": 600,
+          "rotateY": 1200
+        }
+      }
+    },
+    "interactivity": {
+      "detect_on": "canvas",
+      "events": {
+        "onhover": {
+          "enable": false,
+          "mode": "repulse"
+        },
+        "onclick": {
+          "enable": true,
+          "mode": "push"
+        },
+        "resize": true
+      },
+      "modes": {
+        "grab": {
+          "distance": 800,
+          "line_linked": {
+            "opacity": 1
+          }
+        },
+        "bubble": {
+          "distance": 800,
+          "size": 80,
+          "duration": 2,
+          "opacity": 0.8,
+          "speed": 3
+        },
+        "repulse": {
+          "distance": 400,
+          "duration": 0.4
+        },
+        "push": {
+          "particles_nb": 4
+        },
+        "remove": {
+          "particles_nb": 2
+        }
+      }
+    },
+    "retina_detect": true
+  };
+  particlesJS("particle", options);
 
 </script>
+
 </html>

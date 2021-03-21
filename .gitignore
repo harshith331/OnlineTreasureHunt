@@ -2,7 +2,6 @@
 db.sqlite3
 *.pyc
 venv/
-oth/__pycache__/
-treasure/__pycache__
+*/__pycache__
 media/
 images

@@ -11,14 +11,17 @@ import datetime
 
 def index(request):
     config = models.config.objects.get(id=1)
-    lastlevel = config.totallevel # the level upto which questions is currently released.
-    numlevel = config.numlevel # the total no. of levels that would eventually be released.
+    # the level upto which questions is currently released.
+    lastlevel = config.totallevel
+    # the total no. of levels that would eventually be released.
+    numlevel = config.numlevel
     countdown = config.countdown
 
     if request.user.is_authenticated:
         if countdown and (not request.user.is_staff):
+            # if countdown:
             print(datetime.datetime.now())
-            return render(request, 'timer.html',{'time':config.time})
+            return render(request, 'timer.html', {'time': config.time})
 
         player = models.player.objects.get(user_id=request.user.pk)
         if player.current_level <= lastlevel:
@@ -32,14 +35,17 @@ def index(request):
 
 
 def save_profile(backend, user, response, *args, **kwargs):
-    if backend.name == 'facebook':
+    print(backend.name)
+    print(response.items())
+    if backend.name == 'github':
         profile = user
         try:
             player = models.player.objects.get(user=profile)
         except:
             player = models.player(user=profile)
             player.name = response.get('name')
-            player.timestamp=datetime.datetime.now()
+            player.timestamp = datetime.datetime.now()
+            player.profile_url = response.get('avatar_url')
             player.save()
     elif backend.name == 'google-oauth2':
         profile = user
@@ -47,8 +53,9 @@ def save_profile(backend, user, response, *args, **kwargs):
             player = models.player.objects.get(user=profile)
         except:
             player = models.player(user=profile)
-            player.timestamp=datetime.datetime.now()
+            player.timestamp = datetime.datetime.now()
             player.name = response.get('name')
+            player.profile_url = response.get('picture')
             player.save()
 
 
@@ -59,8 +66,11 @@ def answer(request):
     numlevel = config.numlevel
 
     ans = ""
+    level_answer = ""
     if request.method == 'POST':
         ans = request.POST.get('ans')
+        ans = ans.replace(" ", "").lower()
+
     player = models.player.objects.get(user_id=request.user.pk)
     if player.current_level <= lastlevel:
         level = models.level.objects.get(l_number=player.current_level)
@@ -69,12 +79,13 @@ def answer(request):
             return render(request, 'win.html', {'player': player})
         return render(request, 'finish.html', {'player': player})
 
-    if ans == level.answer:
+    if ans == level.answer.replace(" ", "").lower():
         player.current_level = player.current_level + 1
         player.score = player.score + 10
         player.timestamp = datetime.datetime.now(tz=timezone.utc)
         level.numuser = level.numuser + 1
-        level.accuracy = round(level.numuser/(float(level.numuser + level.wrong)),2)
+        level.accuracy = round(
+            level.numuser/(float(level.numuser + level.wrong)), 2)
         level.save()
         player.save()
         if player.current_level <= lastlevel:
@@ -85,9 +96,10 @@ def answer(request):
                 return render(request, 'win.html', {'player': player})
             return render(request, 'finish.html', {'player': player})
 
-    elif ans=="":
+    elif ans == "":
+        if request.method == "POST":
+            messages.error(request, "Please enter answer!")
         return render(request, 'level.html', {'player': player, 'level': level})
-        messages.error(request, "Please enter answer!")
 
     else:
         level.wrong = level.wrong + 1
@@ -99,31 +111,40 @@ def answer(request):
 
 
 def lboard(request):
-    p = models.player.objects.order_by('-score','timestamp')
+    players = models.player.objects.order_by('-score', 'timestamp')
     if request.user.is_authenticated:
         player = models.player.objects.get(user_id=request.user.pk)
     cur_rank = 1
 
-    for pl in p:
+    for pl in players:
         pl.rank = cur_rank
         cur_rank += 1
-    if request.user.is_authenticated:
-        return render(request, 'lboard.html', {'players': p,'player':player, 'hide': False})
+
+    first = players[0]
+    second = players[1]
+    third = players[2]
+
+    if len(players) > 3:
+        players = players[3:]
     else:
-        return render(request, 'lboard.html', {'players': p, 'hide': False})
+        players = []
+
+    if request.user.is_authenticated:
+        return render(request, 'lboard.html', {'players': players, 'player': player, 'first': first, 'second': second, 'third': third, 'hide': False})
+    else:
+        return render(request, 'lboard.html', {'players': players, 'first': first, 'second': second, 'third': third, 'hide': False})
 
 
 def rules(request):
     if request.user.is_authenticated:
         player = models.player.objects.get(user_id=request.user.pk)
-        return render(request, 'index_page.html',{'player':player})
+        return render(request, 'index_page.html', {'player': player})
     else:
         return render(request, 'index_page.html',)
 
-    
 
 def lboard_api(request):
-    p = models.player.objects.order_by('-score','timestamp')
+    p = models.player.objects.order_by('-score', 'timestamp')
     cur_rank = 1
     for pl in p:
         pl.rank = cur_rank
@@ -132,7 +153,7 @@ def lboard_api(request):
     leaderboard = list()
     for pl in p:
         leaderboard.append({
-            'name': pl.name, 
+            'name': pl.name,
             'value': str(pl.score),
             'email': pl.user.email
         })

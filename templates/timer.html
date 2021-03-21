@@ -1,22 +1,28 @@
 {% extends 'base.html' %}
 
 {%block content%}
-<div class="container_t">
-<<<<<<< Updated upstream
-    <h3 class="text-center" style="color: white;">Online Treasure Hunt has finished. Thank you for your participation.</h3>
-
-    <h3 class="text-center" style="color: white;">Goes live on 8th February 2020 at 10.30pm</h3>
-    <br>
-    <p class="opentime" hidden>{{time}}</p>
-    <ul class="timer">
-      <li class="boxt"><span id="days"></span>days</li>
-      <li class="boxt"><span id="hours"></span>Hours</li>
-      <li class="boxt"><span id="minutes"></span>Minutes</li>
-      <li class="boxt"><span id="seconds"></span>Seconds</li>
-    </ul>
+<div class="time-cont">
+  <h1 class="text-center timer-header">Goes live on 1st April 2021 at 12.00pm</h1>
+  <p class="opentime" hidden>{{time}}</p>
+  <div class="container-t container">
+    <div class="row timer-row">
+      <div class="col-xs-3 timer-col">
+        <span class="label-data" id="days"></span>
+        <span class="label">Days</span>
+      </div>
+      <div class="col-xs-3 timer-col">
+        <span class="label-data" id="hours"></span>
+        <span class="label">Hours</span>
+      </div>
+      <div class="col-xs-3 timer-col">
+        <span class="label-data" id="minutes"></span>
+        <span class="label label-long">Minutes</span>
+      </div>
+      <div class="col-xs-3 timer-col" id="time-active">
+        <span class="label-data" id="seconds"></span>
+        <span class="label label-long">Seconds</span>
+      </div>
+    </div>
   </div>
-
->>>>>>> Stashed changes
 </div>
-
 {%endblock%}

@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {%block content%}
 
 <!-- Example row of columns -->
@@ -9,8 +9,10 @@
 
 	{% if user and not user.is_anonymous %}
 
-	       <h1 style="color: white; text-align: center;">More levels to be added soon!</h1>
-
+		   <h1 class="more">More levels to be added soon!</h1>
+		   <div class="img-container">
+				<img id="finish_img" src="{% static 'img/AIMLV96.png' %}" alt="">
+			</div>
 	{% endif %}
 	</div>
 </div>

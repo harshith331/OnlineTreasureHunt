@@ -1,31 +1,78 @@
 {%extends 'base.html'%}
 
 {%block content%}
-      <div class="row">
-        <a href="/"><button type="button" class="btn btn-success btn-lg " style="margin-top:10px;">Go Back</button></a>
-        <h1 class="text-center" style="color: white;">Leaderboard</h1>
-        <br>
-        {% if hide %}
-            <h4 class="alert alert-warning text-center" style="color: black;">Leaderboard will be active from 10.30 PM, 8th Feb.</h4>
-        {% else %}
-            <div class="col-lg-8 col-lg-offset-2">
-            {% if players %}
-                <div style="border: none;" class="table-responsive">
-                <table  class="table table-hover table-striped"  style="font-weight:bold;box-shadow: 0px 0px 8px #000">
-                    <tr style="background-color:#001933; color:#fff; font-size:18px"> 
-                        <th>#</th><th >Player Name</th><th>Player Score</th><th>Last level Crossed at</th>
-                    </tr>
-                    {% for player in players %}
-                    <tr style="background-color:#b1d3f8;color: rgba(0, 11, 46, 0.836);">
-                        <td>{{ player.rank }}</td><td>{{ player.name }}</td>    <td> {{player.score}} </td>    <td> {{player.timestamp}}</td>
-                    </tr>
-                    {% endfor %}
-                </table>
-                </div>
-            {% else %}
-                <strong>There are no players present.</strong>
-            {% endif %}
-            </div>
-        {% endif %}
+<div class="row">
+  <h1 class="text-center" style="color: white; font-family: 'Squada One', cursive; font-size: 5rem;">Leaderboard</h1>
+  <br>
+  {% if hide %}
+  <h4 class="alert alert-warning text-center" style="color: black;">Leaderboard will be active from 10.30 PM, 8th Feb.
+  </h4>
+  {% else %}
+  <div class="col-lg-8 col-lg-offset-2">
+    {% if players %}
+    <div class="top3">
+      <div class="two item">
+        <div class="pos">
+          {{ second.rank }}
+        </div>
+        <div class="pic" style="background-image: url('{{ second.profile_url }}')"></div>
+        <div class="name">
+          {{ second.name }}
+        </div>
+        <div class="score">
+          {{ second.score }}
+        </div>
       </div>
+
+      <div class="one item">
+        <div class="pos">
+          {{ first.rank }}
+        </div>
+        <div class="pic" style="background-image: url('{{ first.profile_url }}')"></div>
+        <div class="name">
+          {{ first.name }}
+        </div>
+        <div class="score">
+          {{ first.score }}
+        </div>
+      </div>
+
+      <div class="three item">
+        <div class="pos">
+          3
+        </div>
+        <div class="pic" style="background-image: url('{{ third.profile_url }}')"></div>
+        <div class="name">
+          {{ third.name }}
+        </div>
+        <div class="score">
+          {{ third.score }}
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="list">
+    {% for player in players %}
+    <div class="item">
+      <div class="pos">
+        {{ player.rank }}
+      </div>
+      <div class="pic" style="background-image: url('{{ player.profile_url }}')">
+      </div>
+      <div class="name">
+        {{ player.name }}
+      </div>
+      <div class="score">
+        {{ player.score }}
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  {% else %}
+  <strong>There are no players present.</strong>
+  {% endif %}
+</div>
+{% endif %}
+</div>
 {%endblock%}
