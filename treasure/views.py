@@ -128,7 +128,7 @@ def lboard(request):
         players = players[3:]
     else:
         players = []
-
+    print(first, second, third)
     if request.user.is_authenticated:
         return render(request, 'lboard.html', {'players': players, 'player': player, 'first': first, 'second': second, 'third': third, 'hide': False})
     else:
@@ -153,9 +153,10 @@ def lboard_api(request):
     leaderboard = list()
     for pl in p:
         leaderboard.append({
+            'rank': pl.rank,
             'name': pl.name,
-            'value': str(pl.score),
-            'email': pl.user.email
+            'email': pl.user.email,
+            'score': str(pl.score),
         })
 
     return JsonResponse(leaderboard, safe=False)
