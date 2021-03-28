@@ -130,9 +130,9 @@ def lboard(request):
         players = []
     print(first, second, third)
     if request.user.is_authenticated:
-        return render(request, 'lboard.html', {'players': players, 'player': player, 'first': first, 'second': second, 'third': third, 'hide': False})
+        return render(request, 'lboard.html', {'players': players, 'player': player, 'first': first, 'second': second, 'third': third, 'hide': True})
     else:
-        return render(request, 'lboard.html', {'players': players, 'first': first, 'second': second, 'third': third, 'hide': False})
+        return render(request, 'lboard.html', {'players': players, 'first': first, 'second': second, 'third': third, 'hide': True})
 
 
 def rules(request):

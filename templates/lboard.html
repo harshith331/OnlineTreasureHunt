@@ -1,76 +1,69 @@
-{% extends 'base.html' %}
-
-{% block content %}
+{% extends 'base.html' %} {% block content %}
 <div class="row">
-  <h1 class="text-center" style="color: white; font-family: 'Squada One', cursive; font-size: 5rem;">Leaderboard</h1>
-  <br>
+  <h1
+    class="text-center"
+    style="color: white; font-family: 'Squada One', cursive; font-size: 5rem"
+  >
+    Leaderboard
+  </h1>
+  <br />
   {% if hide %}
-    <h4 class="alert alert-warning text-center" style="color: black;">Leaderboard will be active from 10.30 PM, 8th Feb.
-    </h4>
+  <h4
+    class="text-center"
+    style="color: white; font-family: 'Squada One', cursive; font-size: 5rem"
+  >
+    Leaderboard will be active from 9:00 PM, 2nd April 2021.
+  </h4>
   {% else %}
-    <div class="col-lg-8 col-lg-offset-2">
-      <div class="top3">
-        <div class="two item">
-          <div class="pos">
-            {{ second.rank }}
-          </div>
-          <div class="pic" style="background-image: url('{{ second.profile_url }}')"></div>
-          <div class="name">
-            {{ second.name }}
-          </div>
-          <div class="score">
-            {{ second.score }}
-          </div>
-        </div>
+  <div class="col-lg-8 col-lg-offset-2">
+    <div class="top3">
+      <div class="two item">
+        <div class="pos">{{ second.rank }}</div>
+        <div
+          class="pic"
+          style="background-image: url('{{ second.profile_url }}')"
+        ></div>
+        <div class="name">{{ second.name }}</div>
+        <div class="score">{{ second.score }}</div>
+      </div>
 
-        <div class="one item">
-          <div class="pos">
-            {{ first.rank }}
-          </div>
-          <div class="pic" style="background-image: url('{{ first.profile_url }}')"></div>
-          <div class="name">
-            {{ first.name }}
-          </div>
-          <div class="score">
-            {{ first.score }}
-          </div>
-        </div>
+      <div class="one item">
+        <div class="pos">{{ first.rank }}</div>
+        <div
+          class="pic"
+          style="background-image: url('{{ first.profile_url }}')"
+        ></div>
+        <div class="name">{{ first.name }}</div>
+        <div class="score">{{ first.score }}</div>
+      </div>
 
-        <div class="three item">
-          <div class="pos">
-            3
-          </div>
-          <div class="pic" style="background-image: url('{{ third.profile_url }}')"></div>
-          <div class="name">
-            {{ third.name }}
-          </div>
-          <div class="score">
-            {{ third.score }}
-          </div>
-        </div>
+      <div class="three item">
+        <div class="pos">3</div>
+        <div
+          class="pic"
+          style="background-image: url('{{ third.profile_url }}')"
+        ></div>
+        <div class="name">{{ third.name }}</div>
+        <div class="score">{{ third.score }}</div>
       </div>
     </div>
-    {% if players %}
-      <div class="list">
-        {% for player in players %}
-        <div class="item">
-          <div class="pos">
-            {{ player.rank }}
-          </div>
-          <div class="pic" style="background-image: url('{{ player.profile_url }}')">
-          </div>
-          <div class="name">
-            {{ player.name }}
-          </div>
-          <div class="score">
-            {{ player.score }}
-          </div>
-        </div>
-        {% endfor %}
-      </div>
-    {% else %}
-      <strong>There are no players present.</strong>
-    {% endif %}
-  {% endif %}
+  </div>
+  {% if players %}
+  <div class="list">
+    {% for player in players %}
+    <div class="item">
+      <div class="pos">{{ player.rank }}</div>
+      <div
+        class="pic"
+        style="background-image: url('{{ player.profile_url }}')"
+      ></div>
+      <div class="name">{{ player.name }}</div>
+      <div class="score">{{ player.score }}</div>
+    </div>
+    {% endfor %}
+  </div>
+  {% else %}
+  <strong>There are no players present.</strong>
+  {% endif %} {% endif %}
 </div>
 {% endblock %}
