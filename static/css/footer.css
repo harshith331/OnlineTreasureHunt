@@ -69,7 +69,7 @@ section {
 }
 .footerft #cont {
   position: relative;
-  top: -45px;
+  top: -20px;
   right: 190px;
   width: 150px;
   height: auto;
@@ -95,6 +95,10 @@ section {
     width: 300px;
     margin: auto;
   }
+
+  .footerft #cont {
+    top: -40px;
+  }
 }
 @media screen and (min-width: 968px) {
   .footer_center p {
@@ -104,14 +108,21 @@ section {
   }
 }
 #logo-img {
-  width: 35px;
-  height: 35px;
+  width: 45px;
+  height: 45px;
+  margin: auto;
+  margin-top: -16px;
+}
+
+#arhn-img {
+  width: 50px;
+  height: 50px;
   margin: auto;
   margin-top: -16px;
 }
 
 .social_links {
-  margin-top: 10px;
+  margin-top: 25px;
 }
 
 .fab {
