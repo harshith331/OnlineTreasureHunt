@@ -98,7 +98,7 @@ def answer(request):
 
     elif ans == "":
         if request.method == "POST":
-            messages.error(request, "Please enter answer!")
+            messages.error(request, "Please enter an answer!")
         return render(request, 'level.html', {'player': player, 'level': level})
 
     else:
@@ -156,7 +156,7 @@ def lboard_api(request):
             'rank': pl.rank,
             'name': pl.name,
             'email': pl.user.email,
-            'score': str(pl.score),
+            'score': pl.score,
         })
 
     return JsonResponse(leaderboard, safe=False)
