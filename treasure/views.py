@@ -24,6 +24,8 @@ def index(request):
             return render(request, 'timer.html', {'time': config.time})
 
         player = models.player.objects.get(user_id=request.user.pk)
+        if player.current_level > numlevel:
+            return render(request, 'win.html', {'player': player})
         if player.current_level <= lastlevel:
             level = models.level.objects.get(l_number=player.current_level)
             return render(request, 'level.html', {'player': player, 'level': level})
